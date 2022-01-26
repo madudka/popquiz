@@ -2,4 +2,6 @@
     <string name="app_name">PopQuiz</string>
     <string name="start">Start</string>
     <string name="back">Back</string>
+    <string name="exit">Press one more time to exit</string>
+    <string name="level">Level:</string>
 </resources>

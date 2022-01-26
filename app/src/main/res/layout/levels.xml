@@ -20,21 +20,21 @@
         android:gravity="center">
 
         <LinearLayout
-            android:id="@+id/contLvlBack"
+            android:id="@+id/contBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
 
             <LinearLayout
-                android:id="@+id/contBack"
+                android:id="@+id/contBtnBack"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <com.google.android.material.button.MaterialButton
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:id="@+id/btnBackLvl"
+                    android:id="@+id/btnBack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/back"

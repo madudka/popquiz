@@ -17,4 +17,5 @@
     <style name="ButtonTextAppearance" parent="TextAppearance.MaterialComponents.Button">
         <item name="fontFamily">@font/chewy_regular</item>
     </style>
+
 </resources>
