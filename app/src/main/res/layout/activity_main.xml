@@ -8,14 +8,14 @@
 
 
     <ImageView
-        android:id="@+id/img_main_bg"
+        android:id="@+id/imgMainBg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/main_background" />
 
     <ImageView
-        android:id="@+id/img_logo"
+        android:id="@+id/imgLogo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
@@ -26,25 +26,37 @@
         android:src="@drawable/logo" />
 
     <LinearLayout
-        android:id="@+id/layout_start"
+        android:id="@+id/layoutStart"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:padding="10dp"
-        android:background="@color/clear"
+        android:background="@android:color/transparent"
         android:layout_marginBottom="50dp">
 
-        <Button
-            android:id="@+id/btn_start"
+<!--        <android.widget.Button-->
+<!--            android:id="@+id/btnStart"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/style_btn"-->
+<!--            android:fontFamily="@font/chewy"-->
+<!--            android:text="@string/start"-->
+<!--            android:textColor="@color/black95"-->
+<!--            android:textSize="28sp"-->
+<!--            android:padding="5dp"/>-->
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:id="@+id/btnStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/style_btn"
-            android:fontFamily="@font/chewy"
-            android:foreground="@drawable/style_btn"
             android:text="@string/start"
             android:textColor="@color/black95"
-            android:textSize="28sp"/>
+            android:textSize="28sp"
+            android:textAppearance="@style/ButtonTextAppearance"
+            app:cornerRadius="25dp"
+            app:strokeWidth="5dp"
+            app:strokeColor="@color/black95"/>
     </LinearLayout>
 </RelativeLayout>
