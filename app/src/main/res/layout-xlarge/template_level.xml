@@ -171,6 +171,7 @@
                     android:background="@drawable/style_choice_large"
                     android:fontFamily="@font/troubleside"
                     android:padding="15dp"
+                    android:textAlignment="center"
                     android:text="Некоторый ответ"
                     android:textColor="@color/black95"
                     android:textSize="38sp" />
@@ -184,6 +185,7 @@
                     android:background="@drawable/style_choice_large"
                     android:fontFamily="@font/troubleside"
                     android:padding="15dp"
+                    android:textAlignment="center"
                     android:text="Другой некоторый ответ"
                     android:textColor="@color/black95"
                     android:textSize="38sp" />

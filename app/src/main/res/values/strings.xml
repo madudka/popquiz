@@ -4,4 +4,10 @@
     <string name="back">Back</string>
     <string name="exit">Press one more time to exit</string>
     <string name="level">Level:</string>
+    <string name="level1">Level 1</string>
+    <string name="dialog_continue">Continue</string>
+    <string name="dialog_close">X</string>
+    <string name="lvl_one">Выберите историческое событие, которое произошло первым.\nВопросы повторяются, пока не наберете проходной балл.</string>
+    <string name="true_answer">Верно</string>
+    <string name="false_answer">Неверно</string>
 </resources>

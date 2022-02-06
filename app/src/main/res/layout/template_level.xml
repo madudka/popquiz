@@ -157,8 +157,9 @@
                     android:layout_marginTop="10dp"
                     android:textColor="@color/black95"
                     android:textSize="16sp"
+                    android:textAlignment="center"
                     android:padding="10dp"
-                    android:text="Некоторый ответ"
+                    android:text="Некоторый\nответ"
                     android:fontFamily="@font/troubleside"
                     android:background="@drawable/style_choice"
                     android:layout_weight="1"/>
@@ -170,7 +171,8 @@
                     android:textColor="@color/black95"
                     android:textSize="16sp"
                     android:padding="10dp"
-                    android:text="Другой некоторый ответ"
+                    android:textAlignment="center"
+                    android:text="Другой\nнекоторый ответ"
                     android:fontFamily="@font/troubleside"
                     android:background="@drawable/style_choice"
                     android:layout_weight="1"/>
