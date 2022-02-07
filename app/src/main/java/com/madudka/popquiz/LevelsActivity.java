@@ -41,6 +41,26 @@ public class LevelsActivity extends AppCompatActivity {
 
             }
         });
+
+        binding.textView2.setOnClickListener(v -> {
+            try {
+                Intent intent = new Intent(LevelsActivity.this, Level2Activity.class);
+                startActivity(intent);
+                finish();
+            } catch (Exception ex){
+
+            }
+        });
+
+        binding.textView3.setOnClickListener(v -> {
+            try {
+                Intent intent = new Intent(LevelsActivity.this, Level3Activity.class);
+                startActivity(intent);
+                finish();
+            } catch (Exception ex){
+
+            }
+        });
     }
 
     @Override

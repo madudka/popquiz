@@ -1,7 +1,5 @@
 package com.madudka.popquiz;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
@@ -13,17 +11,19 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.madudka.popquiz.databinding.TemplateLevelBinding;
-import com.madudka.popquiz.question.JsonHelper;
 import com.madudka.popquiz.question.Question;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Level1Activity extends AppCompatActivity {
+public class Level3Activity extends AppCompatActivity {
 
     private Dialog dialogPreview;
     private Dialog dialogEnd;
@@ -51,7 +51,7 @@ public class Level1Activity extends AppCompatActivity {
         setContentView(view);
 
         binding.templateLlvBg.setImageResource(R.drawable.history_background);
-        binding.textLevels.setText(R.string.level1);
+        binding.textLevels.setText(R.string.level3);
 
         setPreviewDialog();
         setDialogEnd();
@@ -64,17 +64,18 @@ public class Level1Activity extends AppCompatActivity {
         final TextView[] progress = {binding.point1, binding.point2, binding.point3, binding.point4, binding.point5,
                 binding.point6, binding.point7, binding.point8, binding.point9, binding.point10};
 
-//        String jsonQuestions = JsonHelper.getJsonFromAssets(getApplicationContext(), JsonHelper.FILE_QUESTION);
-//        questionArray = JsonHelper.importFromJSON(jsonQuestions);
-        questionArray = Question.getQuestionList(getApplicationContext(), 1);
+        questionArray = Question.getQuestionList(getApplicationContext(), 3);
         if (questionArray != null) {
             if (questionArray.size() > 0) {
+
                 //Цикл начинается с 1, т.к. questionNum по-умолчанию 0
                 //Первый элемент этого списка всегда будет в начале 0, и удаляться после присвоения
                 for (int i = 1; i < 10; i++) {
                     idArrayDeque.addLast(i);
                 }
+
                 binding.textViewQuestion.setText(questionArray.get(questionNum).getQuestion());
+
                 setRandomChoices(binding.textViewChoice1, binding.textViewChoice2);
             }
         }
@@ -110,7 +111,7 @@ public class Level1Activity extends AppCompatActivity {
 
     private void back(){
         try{
-            Intent intent = new Intent(Level1Activity.this, LevelsActivity.class);
+            Intent intent = new Intent(Level3Activity.this, LevelsActivity.class);
             startActivity(intent);
             finish();
         } catch (Exception ex){
@@ -124,6 +125,11 @@ public class Level1Activity extends AppCompatActivity {
         dialogPreview.setContentView(R.layout.preview_dialog);
         dialogPreview.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); //прозрачность сзади диалога
         dialogPreview.setCancelable(false); //отмена закрытия кнопкной "назад"
+
+        ImageView imgPrev = (ImageView)dialogPreview.findViewById(R.id.prevImg);
+        imgPrev.setImageResource(R.drawable.preview_image_three);
+        TextView tv = (TextView)dialogPreview.findViewById(R.id.textDescr);
+        tv.setText(R.string.lvl_three);
 
         dialogPreview.findViewById(R.id.btnClose).setOnClickListener(v -> {
             back();
@@ -143,6 +149,9 @@ public class Level1Activity extends AppCompatActivity {
         dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialogEnd.setCancelable(false); //отмена закрытия кнопкной "назад"
 
+        TextView tv = (TextView)dialogEnd.findViewById(R.id.textDescrEnd);
+        tv.setText(R.string.lvl_three_end);
+
         dialogEnd.findViewById(R.id.btnClose).setOnClickListener(v -> {
             back();
             dialogEnd.dismiss();
@@ -150,7 +159,7 @@ public class Level1Activity extends AppCompatActivity {
 
         dialogEnd.findViewById(R.id.btnContinue).setOnClickListener(v -> {
             try {
-                Intent intent = new Intent(Level1Activity.this, Level2Activity.class);
+                Intent intent = new Intent(Level3Activity.this, Level4Activity.class);
                 startActivity(intent);
                 finish();
             } catch (Exception ex){

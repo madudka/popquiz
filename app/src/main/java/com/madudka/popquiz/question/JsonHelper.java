@@ -14,7 +14,9 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 public class JsonHelper {
-    public static final String FILE_QUESTION = "questions.json";
+    public static final String FILE_QUESTION_ONE = "questions_one.json";
+    public static final String FILE_QUESTION_TWO = "questions_two.json";
+    public static final String FILE_QUESTION_THREE = "questions_three.json";
 
     public static String getJsonFromAssets(Context context, String fileName) {
         String jsonString;
