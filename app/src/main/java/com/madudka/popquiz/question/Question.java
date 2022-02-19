@@ -3,6 +3,8 @@ package com.madudka.popquiz.question;
 
 import android.content.Context;
 
+import com.madudka.popquiz.ILevel;
+
 import java.util.ArrayList;
 
 public class Question {
@@ -50,14 +52,8 @@ public class Question {
         this.info = info;
     }
 
-    public static ArrayList<Question> getQuestionList(Context context, int level){
-        String fileName = JsonHelper.FILE_QUESTION_ONE;
-        switch (level){
-            case 2: fileName = JsonHelper.FILE_QUESTION_TWO; break;
-            case 3: fileName = JsonHelper.FILE_QUESTION_THREE; break;
-        }
-
-        String jsonQuestions = JsonHelper.getJsonFromAssets(context, fileName);
+    public static ArrayList<Question> getQuestionList(Context context, ILevel level){
+        String jsonQuestions = JsonHelper.getJsonFromAssets(context, level.getFileName());
         return JsonHelper.importFromJSON(jsonQuestions);
     }
 }

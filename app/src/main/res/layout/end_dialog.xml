@@ -39,7 +39,7 @@
                 android:id="@+id/textDescrEnd"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/lvl_one_end"
+                android:text="@string/lvl1_end"
                 android:textColor="@color/platinum"
                 android:textSize="20sp"
                 android:fontFamily="@font/troubleside"/>
