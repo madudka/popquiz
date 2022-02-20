@@ -2,6 +2,7 @@ package com.madudka.popquiz;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -10,9 +11,14 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.madudka.popquiz.adv.AdvHelper;
 import com.madudka.popquiz.databinding.LevelsBinding;
+import com.madudka.popquiz.preference.PreferencesHelper;
 
 import java.util.Arrays;
+import java.util.function.Predicate;
 
 public class LevelsActivity extends AppCompatActivity {
 
@@ -32,11 +38,19 @@ public class LevelsActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        AdvHelper.init(this);
+        AdvHelper.loadBanner(findViewById(R.id.adView));
+
+        SharedPreferences preferences = PreferencesHelper.getCustomPreferences(
+                getApplicationContext(), PreferencesHelper.SAVE);
+        final int level = PreferencesHelper.getLevel(preferences);
+
+
         binding.btnBack.setOnClickListener(v -> {
             back();
         });
 
-         TextView[] textViews = new TextView[] {
+         final TextView[] textViews = new TextView[] {
                 binding.textView1, binding.textView2, binding.textView3, binding.textView4, binding.textView5
             , binding.textView6, binding.textView7, binding.textView8, binding.textView9, binding.textView10
             , binding.textView11, binding.textView12, binding.textView13, binding.textView14, binding.textView15
@@ -47,25 +61,19 @@ public class LevelsActivity extends AppCompatActivity {
 
         for (int i = 0; i < textViews.length; i++){
             textViews[i].setOnClickListener(v -> {
-                startLevel(Arrays.asList(textViews).indexOf(v) + 1);
+                int index = Arrays.asList(textViews).indexOf(v) + 1;
+                if (level >= index) {
+                    startLevel(index);
+                } else {
+
+                }
             });
         }
 
-//        binding.textView1.setOnClickListener(v -> {
-//            startLevel(1);
-//        });
-//
-//        binding.textView2.setOnClickListener(v -> {
-//            startLevel(2);
-//        });
-//
-//        binding.textView3.setOnClickListener(v -> {
-//            startLevel(3);
-//        });
-//
-//        binding.textView4.setOnClickListener(v -> {
-//            startLevel(4);
-//        });
+        for (int i = 0; i < level; i++){
+            textViews[i].setBackgroundResource(R.drawable.style_btn_lvl);
+            textViews[i].setTextColor(getColor(R.color.black95));
+        }
     }
 
     @Override

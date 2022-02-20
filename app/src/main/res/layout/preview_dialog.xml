@@ -22,7 +22,7 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:text="@string/dialog_close"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textColor="@color/black95"
             android:textStyle="bold"
             android:textAppearance="@style/ButtonTextAppearance"
@@ -31,19 +31,29 @@
             app:strokeColor="@color/black95"
             android:layout_gravity="start"/>
 
+        <TextView
+            android:id="@+id/textTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textColor="@color/platinum"
+            android:fontFamily="@font/troubleside"
+            android:text="@string/lvl1_theme"/>
+
         <ImageView
             android:id="@+id/prevImg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/preview_image_one"
             android:layout_marginBottom="10dp"
-            android:layout_weight="60"
-            />
+            android:layout_weight="60"/>
+
         <TextView
             android:id="@+id/textDescr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/level1"
+            android:text="@string/lvl_1_6_start"
             android:textColor="@color/platinum"
             android:textSize="22sp"
             android:fontFamily="@font/troubleside"

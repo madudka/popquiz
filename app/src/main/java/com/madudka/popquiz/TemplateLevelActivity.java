@@ -1,8 +1,11 @@
 package com.madudka.popquiz;
 
+import static com.madudka.popquiz.LevelsActivity.LEVEL_NUM;
+
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -16,19 +19,25 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.madudka.popquiz.adv.AdvHelper;
 import com.madudka.popquiz.databinding.TemplateLevelBinding;
-import com.madudka.popquiz.question.JsonHelper;
+import com.madudka.popquiz.preference.PreferencesHelper;
 import com.madudka.popquiz.question.Question;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Level2Activity extends AppCompatActivity {
+public class TemplateLevelActivity extends AppCompatActivity {
+
+    public static TemplateLevelActivity instance;
 
     private Dialog dialogPreview;
     private Dialog dialogEnd;
     private TemplateLevelBinding binding;
+
+    private ILevel level;
+    private int lvlNum = 1;
 
     private int questionNum = 0;
     //Массив вопросов всегда - остается фиксированным
@@ -51,8 +60,18 @@ public class Level2Activity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        instance = this;
+
+        AdvHelper.init(this);
+        AdvHelper.loadInterstitial(this);
+
+        //Получение номера уровня и объекта уровня
+        Intent intent = getIntent();
+        lvlNum = intent.getIntExtra(LEVEL_NUM, 1);
+        level = LevelHelper.getLevelObject(lvlNum);
+
         binding.templateLlvBg.setImageResource(R.drawable.history_background);
-        binding.textLevels.setText(R.string.level2);
+        binding.textLevels.setText(level.getTextLevel());
 
         setPreviewDialog();
         setDialogEnd();
@@ -65,7 +84,7 @@ public class Level2Activity extends AppCompatActivity {
         final TextView[] progress = {binding.point1, binding.point2, binding.point3, binding.point4, binding.point5,
                 binding.point6, binding.point7, binding.point8, binding.point9, binding.point10};
 
-        questionArray = Question.getQuestionList(getApplicationContext(), 2);
+        questionArray = Question.getQuestionList(getApplicationContext(), level);
         if (questionArray != null) {
             if (questionArray.size() > 0) {
 
@@ -102,7 +121,6 @@ public class Level2Activity extends AppCompatActivity {
                 binding.textViewHint.setTextAppearance(R.style.TextHintAppearanceShow);
             }
         });
-
     }
 
     @Override
@@ -110,13 +128,30 @@ public class Level2Activity extends AppCompatActivity {
         back();
     }
 
-    private void back(){
-        try{
-            Intent intent = new Intent(Level2Activity.this, LevelsActivity.class);
-            startActivity(intent);
-            finish();
-        } catch (Exception ex){
+    public void back() {
+        AdvHelper.typeOperation = 1;
+        if (!AdvHelper.showInterstitialAd(this, this)) {
+            try {
+                Intent intent = new Intent(TemplateLevelActivity.this, LevelsActivity.class);
+                startActivity(intent);
+                finish();
+            } catch (Exception ex) {
 
+            }
+        }
+    }
+
+    public void gameContinue(){
+        AdvHelper.typeOperation = 2;
+        if (!AdvHelper.showInterstitialAd(this,this)) {
+            try {
+                Intent intent = new Intent(TemplateLevelActivity.this, TemplateLevelActivity.class);
+                intent.putExtra(LEVEL_NUM, ++lvlNum);
+                startActivity(intent);
+                finish();
+            } catch (Exception ex) {
+
+            }
         }
     }
 
@@ -128,9 +163,12 @@ public class Level2Activity extends AppCompatActivity {
         dialogPreview.setCancelable(false); //отмена закрытия кнопкной "назад"
 
         ImageView imgPrev = (ImageView)dialogPreview.findViewById(R.id.prevImg);
-        imgPrev.setImageResource(R.drawable.preview_image_two);
-        TextView tv = (TextView)dialogPreview.findViewById(R.id.textDescr);
-        tv.setText(R.string.lvl_two);
+        imgPrev.setImageResource(level.getPrevImgId());
+        TextView tvDescr = (TextView)dialogPreview.findViewById(R.id.textDescr);
+        tvDescr.setText(level.getPrevTextLvl());
+        TextView tvTheme = (TextView)dialogPreview.findViewById(R.id.textTheme);
+        tvTheme.setText(level.getPrevTextTheme());
+
 
         dialogPreview.findViewById(R.id.btnClose).setOnClickListener(v -> {
             back();
@@ -151,21 +189,16 @@ public class Level2Activity extends AppCompatActivity {
         dialogEnd.setCancelable(false); //отмена закрытия кнопкной "назад"
 
         TextView tv = (TextView)dialogEnd.findViewById(R.id.textDescrEnd);
-        tv.setText(R.string.lvl_two_end);
+        tv.setText(level.getEndTextLvl());
 
         dialogEnd.findViewById(R.id.btnClose).setOnClickListener(v -> {
             back();
             dialogEnd.dismiss();
         });
 
+        //Добавить условие для последнего уровня
         dialogEnd.findViewById(R.id.btnContinue).setOnClickListener(v -> {
-            try {
-                Intent intent = new Intent(Level2Activity.this, Level3Activity.class);
-                startActivity(intent);
-                finish();
-            } catch (Exception ex){
-
-            }
+            if (lvlNum < 30) gameContinue(); else back();
             dialogEnd.dismiss();
         });
     }
@@ -211,6 +244,10 @@ public class Level2Activity extends AppCompatActivity {
             handler.postDelayed(() -> {
                 if (idArrayDeque.size() == 0) {
                     //Выход из уровня
+                    if (lvlNum < 30) {
+                        updatePreferences();
+                    }
+
                     dialogEnd.show();
                 } else {
                     questionNum = idArrayDeque.pop();
@@ -227,6 +264,17 @@ public class Level2Activity extends AppCompatActivity {
                     setRandomChoices(tv, otv);
                 }
             }, 500);
+        }
+    }
+
+    private void updatePreferences() {
+        SharedPreferences preferences = PreferencesHelper.getCustomPreferences(
+                getApplicationContext(), PreferencesHelper.SAVE);
+        final int numLevel = PreferencesHelper.getLevel(preferences);
+        if (numLevel > 30) {
+
+        } else {
+            PreferencesHelper.setLevel(preferences, numLevel + 1);
         }
     }
 }

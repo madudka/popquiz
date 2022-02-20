@@ -32,7 +32,8 @@
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:padding="15dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         android:background="@android:color/transparent"
         android:layout_marginBottom="70dp">
 

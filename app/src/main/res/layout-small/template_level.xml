@@ -57,7 +57,7 @@
                     android:textSize="18sp"
                     android:textColor="@color/white"
                     android:text="@string/level"
-                    android:fontFamily="@font/chewy_regular"
+                    android:textAppearance="@style/ButtonTextAppearance"
                     android:gravity="right"
                     android:padding="10dp"/>
 

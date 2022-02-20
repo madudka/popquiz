@@ -54,7 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="@font/chewy_regular"
+                    android:textAppearance="@style/ButtonTextAppearance"
                     android:gravity="right"
                     android:padding="15dp"
                     android:text="@string/level"

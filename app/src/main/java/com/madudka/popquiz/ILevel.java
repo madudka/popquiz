@@ -6,6 +6,7 @@ public interface ILevel {
     int getPrevTextLvl();
     int getEndTextLvl();
     int getPrevImgId();
+    int getPrevTextTheme();
 }
 
 class LevelHelper{
@@ -63,6 +64,9 @@ class Level1 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_one; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl1_theme; }
 }
 
 class Level2 implements ILevel{
@@ -82,6 +86,9 @@ class Level2 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_two; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl2_theme; }
 }
 
 class Level3 implements ILevel{
@@ -101,6 +108,9 @@ class Level3 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_three; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl3_theme; }
 }
 
 class Level4 implements ILevel{
@@ -118,6 +128,9 @@ class Level4 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_four; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl4_theme; }
 }
 
 class Level5 implements ILevel{
@@ -135,6 +148,9 @@ class Level5 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_five; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl5_theme; }
 }
 
 class Level6 implements ILevel{
@@ -154,6 +170,9 @@ class Level6 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_six; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl6_theme; }
 }
 
 class Level7 implements ILevel{
@@ -173,6 +192,9 @@ class Level7 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_seven; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl7_theme; }
 }
 
 class Level8 implements ILevel{
@@ -192,6 +214,9 @@ class Level8 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_eight; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl8_theme; }
 }
 
 class Level9 implements ILevel{
@@ -209,6 +234,9 @@ class Level9 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_nine; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl9_theme; }
 }
 
 class Level10 implements ILevel{
@@ -226,6 +254,9 @@ class Level10 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_ten; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl10_theme; }
 }
 
 class Level11 implements ILevel{
@@ -245,6 +276,9 @@ class Level11 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_eleven; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl11_theme; }
 }
 
 class Level12 implements ILevel{
@@ -264,6 +298,9 @@ class Level12 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_twelve; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl12_theme; }
 }
 
 class Level13 implements ILevel{
@@ -283,6 +320,9 @@ class Level13 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_thirteen; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl13_theme; }
 }
 
 class Level14 implements ILevel{
@@ -300,6 +340,9 @@ class Level14 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_fourteen; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl14_theme; }
 }
 
 class Level15 implements ILevel{
@@ -317,6 +360,9 @@ class Level15 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_fifteen; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl15_theme; }
 }
 
 class Level16 implements ILevel{
@@ -336,6 +382,9 @@ class Level16 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_sixteen; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl16_theme; }
 }
 
 class Level17 implements ILevel{
@@ -355,6 +404,9 @@ class Level17 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_seventeen; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl17_theme; }
 }
 
 class Level18 implements ILevel{
@@ -374,6 +426,9 @@ class Level18 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_eighteen; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl18_theme; }
 }
 
 class Level19 implements ILevel{
@@ -391,6 +446,9 @@ class Level19 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_nineteen; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl19_theme; }
 }
 
 class Level20 implements ILevel{
@@ -408,6 +466,9 @@ class Level20 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_twenty; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl20_theme; }
 }
 
 class Level21 implements ILevel{
@@ -427,6 +488,9 @@ class Level21 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_twenty_one; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl21_theme; }
 }
 
 class Level22 implements ILevel{
@@ -446,6 +510,9 @@ class Level22 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_twenty_two; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl22_theme; }
 }
 
 class Level23 implements ILevel{
@@ -465,6 +532,9 @@ class Level23 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_twenty_three; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl23_theme; }
 }
 
 class Level24 implements ILevel{
@@ -482,6 +552,9 @@ class Level24 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_twenty_four; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl24_theme; }
 }
 
 class Level25 implements ILevel{
@@ -499,6 +572,9 @@ class Level25 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_twenty_five; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl25_theme; }
 }
 
 class Level26 implements ILevel{
@@ -518,6 +594,9 @@ class Level26 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_twenty_six; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl26_theme; }
 }
 
 class Level27 implements ILevel{
@@ -537,6 +616,9 @@ class Level27 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_twenty_seven; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl27_theme; }
 }
 
 class Level28 implements ILevel{
@@ -556,6 +638,9 @@ class Level28 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_twenty_eight; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl28_theme; }
 }
 
 class Level29 implements ILevel{
@@ -573,6 +658,9 @@ class Level29 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_twenty_nine; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl29_theme; }
 }
 
 class Level30 implements ILevel{
@@ -590,4 +678,7 @@ class Level30 implements ILevel{
 
     @Override
     public int getPrevImgId() { return R.drawable.preview_image_thirty; }
+
+    @Override
+    public int getPrevTextTheme() { return R.string.lvl30_theme; }
 }
