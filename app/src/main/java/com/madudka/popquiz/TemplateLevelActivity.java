@@ -42,7 +42,7 @@ public class TemplateLevelActivity extends AppCompatActivity {
     private int questionNum = 0;
     //Массив вопросов всегда - остается фиксированным
     public ArrayList<Question> questionArray;
-    //Массив id вопросов - используется для управления актуальынм списком вопросов
+    //Массив id вопросов - используется для управления актуальным списком вопросов
     public ArrayDeque<Integer> idArrayDeque = new ArrayDeque<>(10);
     private Random random = new Random();
     private int r = 0;
@@ -70,6 +70,8 @@ public class TemplateLevelActivity extends AppCompatActivity {
         lvlNum = intent.getIntExtra(LEVEL_NUM, 1);
         level = LevelHelper.getLevelObject(lvlNum);
 
+        initQuestions();
+
         binding.templateLlvBg.setImageResource(R.drawable.history_background);
         binding.textLevels.setText(level.getTextLevel());
 
@@ -77,28 +79,10 @@ public class TemplateLevelActivity extends AppCompatActivity {
         setDialogEnd();
         dialogPreview.show();
 
-        binding.btnBack.setOnClickListener(v -> {
-            back();
-        });
+        binding.btnBack.setOnClickListener(v -> back());
 
         final TextView[] progress = {binding.point1, binding.point2, binding.point3, binding.point4, binding.point5,
                 binding.point6, binding.point7, binding.point8, binding.point9, binding.point10};
-
-        questionArray = Question.getQuestionList(getApplicationContext(), level);
-        if (questionArray != null) {
-            if (questionArray.size() > 0) {
-
-                //Цикл начинается с 1, т.к. questionNum по-умолчанию 0
-                //Первый элемент этого списка всегда будет в начале 0, и удаляться после присвоения
-                for (int i = 1; i < 10; i++) {
-                    idArrayDeque.addLast(i);
-                }
-
-                binding.textViewQuestion.setText(questionArray.get(questionNum).getQuestion());
-
-                setRandomChoices(binding.textViewChoice1, binding.textViewChoice2);
-            }
-        }
 
         //нажатие на первый вариант
         binding.textViewChoice1.setOnTouchListener((v, event) -> {
@@ -123,6 +107,21 @@ public class TemplateLevelActivity extends AppCompatActivity {
         });
     }
 
+    private void initQuestions() {
+        questionArray = Question.getQuestionList(getApplicationContext(), level);
+        if (questionArray != null) {
+            if (questionArray.size() > 0) {
+                //Цикл начинается с 1, т.к. questionNum по-умолчанию 0
+                //Первый элемент этого списка всегда будет в начале 0, и удаляться после присвоения
+                for (int i = 1; i < 10; i++) {
+                    idArrayDeque.addLast(i);
+                }
+                binding.textViewQuestion.setText(questionArray.get(questionNum).getQuestion());
+                setRandomChoices(binding.textViewChoice1, binding.textViewChoice2);
+            }
+        }
+    }
+
     @Override
     public void onBackPressed() {
         back();
@@ -136,7 +135,7 @@ public class TemplateLevelActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             } catch (Exception ex) {
-
+                //Log.d("back", ex.getMessage());
             }
         }
     }
@@ -150,7 +149,7 @@ public class TemplateLevelActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             } catch (Exception ex) {
-
+                //Log.d("back", ex.getMessage());
             }
         }
     }
@@ -175,9 +174,7 @@ public class TemplateLevelActivity extends AppCompatActivity {
             dialogPreview.dismiss();
         });
 
-        dialogPreview.findViewById(R.id.btnContinue).setOnClickListener(v -> {
-            dialogPreview.dismiss();
-        });
+        dialogPreview.findViewById(R.id.btnContinue).setOnClickListener(v -> dialogPreview.dismiss());
     }
 
     private void setDialogEnd(){
@@ -244,9 +241,7 @@ public class TemplateLevelActivity extends AppCompatActivity {
             handler.postDelayed(() -> {
                 if (idArrayDeque.size() == 0) {
                     //Выход из уровня
-                    if (lvlNum < 30) {
-                        updatePreferences();
-                    }
+                    updatePreferences();
 
                     dialogEnd.show();
                 } else {
@@ -263,7 +258,7 @@ public class TemplateLevelActivity extends AppCompatActivity {
 
                     setRandomChoices(tv, otv);
                 }
-            }, 500);
+            }, 250);
         }
     }
 
@@ -271,9 +266,7 @@ public class TemplateLevelActivity extends AppCompatActivity {
         SharedPreferences preferences = PreferencesHelper.getCustomPreferences(
                 getApplicationContext(), PreferencesHelper.SAVE);
         final int numLevel = PreferencesHelper.getLevel(preferences);
-        if (numLevel > 30) {
-
-        } else {
+        if (numLevel < 30) {
             PreferencesHelper.setLevel(preferences, numLevel + 1);
         }
     }

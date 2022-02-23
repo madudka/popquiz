@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">History Quiz</string>
-    //ca-app-pub-7999923351432136/7593158212 (TEST ca-app-pub-3940256099942544/1033173712)
-    <string name="AD_UNIT_INTERSTITIAL">ca-app-pub-3940256099942544/1033173712</string>
-    //ca-app-pub-7999923351432136/2545679817 (TEST ca-app-pub-3940256099942544/6300978111)
-    <string name="AD_UNIT_BANNER">ca-app-pub-3940256099942544/6300978111</string>
+    <!--ca-app-pub-7999923351432136/7593158212 (TEST ca-app-pub-3940256099942544/1033173712)-->
+    <string name="AD_UNIT_INTERSTITIAL">ca-app-pub-7999923351432136/7593158212</string>
+    <!--ca-app-pub-7999923351432136/2545679817 (TEST ca-app-pub-3940256099942544/6300978111)-->
+    <string name="AD_UNIT_BANNER">ca-app-pub-7999923351432136/2545679817</string>
     <string name="start">Start</string>
     <string name="back">Back</string>
     <string name="exit">Press one more time to exit</string>
@@ -178,7 +178,7 @@
     <string name="lvl7_theme">History of inventions [2/5]</string>
     <string name="lvl8_theme">History of inventions [3/5]</string>
     <string name="lvl9_theme">History of inventions [4/5]</string>
-    <string name="lvl10_theme">History of inventions[5/5]</string>
+    <string name="lvl10_theme">History of inventions [5/5]</string>
     <string name="lvl11_theme">History of wars [1/5]</string>
     <string name="lvl12_theme">History of wars [2/5]</string>
     <string name="lvl13_theme">History of wars [3/5]</string>

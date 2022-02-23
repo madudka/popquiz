@@ -1,6 +1,5 @@
 package com.madudka.popquiz;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,14 +10,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
 import com.madudka.popquiz.adv.AdvHelper;
 import com.madudka.popquiz.databinding.LevelsBinding;
 import com.madudka.popquiz.preference.PreferencesHelper;
 
 import java.util.Arrays;
-import java.util.function.Predicate;
 
 public class LevelsActivity extends AppCompatActivity {
 
@@ -45,10 +41,7 @@ public class LevelsActivity extends AppCompatActivity {
                 getApplicationContext(), PreferencesHelper.SAVE);
         final int level = PreferencesHelper.getLevel(preferences);
 
-
-        binding.btnBack.setOnClickListener(v -> {
-            back();
-        });
+        binding.btnBack.setOnClickListener(v -> back());
 
          final TextView[] textViews = new TextView[] {
                 binding.textView1, binding.textView2, binding.textView3, binding.textView4, binding.textView5
@@ -59,13 +52,11 @@ public class LevelsActivity extends AppCompatActivity {
             , binding.textView26, binding.textView27, binding.textView28, binding.textView29, binding.textView30
         };
 
-        for (int i = 0; i < textViews.length; i++){
-            textViews[i].setOnClickListener(v -> {
+        for (TextView textView : textViews) {
+            textView.setOnClickListener(v -> {
                 int index = Arrays.asList(textViews).indexOf(v) + 1;
-                if (level >= index) {
+                if (level >= index && index != 0) {
                     startLevel(index);
-                } else {
-
                 }
             });
         }
@@ -88,7 +79,7 @@ public class LevelsActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         } catch (Exception ex) {
-
+            //Log.d("back", ex.getMessage());
         }
     }
 
@@ -96,10 +87,11 @@ public class LevelsActivity extends AppCompatActivity {
         try {
             Intent intent = new Intent(LevelsActivity.this, TemplateLevelActivity.class);
             intent.putExtra(LEVEL_NUM, numLevel);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             startActivity(intent);
             finish();
         } catch (Exception ex){
-
+            //Log.d("startLevel", ex.getMessage());
         }
     }
 }

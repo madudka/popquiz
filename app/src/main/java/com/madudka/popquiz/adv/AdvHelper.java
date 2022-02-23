@@ -71,12 +71,12 @@ public class AdvHelper {
     }
 
     public static boolean showInterstitialAd(Activity activity, Context context){
-        if (mInterstitialAd != null){
-            mInterstitialAd.show(activity);
-            return true;
-        } else {
+        if (mInterstitialAd == null){
             loadInterstitial(context);
             return false;
+        } else {
+            mInterstitialAd.show(activity);
+            return true;
         }
     }
 }

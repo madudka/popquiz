@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Викторина по истории</string>
-    //ca-app-pub-7999923351432136/7593158212 (TEST ca-app-pub-3940256099942544/1033173712)
-    <string name="AD_UNIT_INTERSTITIAL">ca-app-pub-3940256099942544/1033173712</string>
-    //ca-app-pub-7999923351432136/2545679817 (TEST ca-app-pub-3940256099942544/6300978111)
-    <string name="AD_UNIT_BANNER">ca-app-pub-3940256099942544/6300978111</string>
+    <!--ca-app-pub-7999923351432136/7593158212 (TEST ca-app-pub-3940256099942544/1033173712)-->
+    <string name="AD_UNIT_INTERSTITIAL">ca-app-pub-7999923351432136/7593158212</string>
+    <!--ca-app-pub-7999923351432136/2545679817 (TEST ca-app-pub-3940256099942544/6300978111)-->
+    <string name="AD_UNIT_BANNER">ca-app-pub-7999923351432136/2545679817</string>
     <string name="start">Начать</string>
     <string name="back">Назад</string>
     <string name="exit">Нажмите еще раз, чтобы выйти</string>
