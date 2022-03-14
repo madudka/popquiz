@@ -55,7 +55,10 @@ public class AdvHelper {
                                 switch (typeOperation){
                                     default:
                                     case 0: break;
-                                    case 1: TemplateLevelActivity.instance.back(); break;
+                                    case 1:
+                                        if (TemplateLevelActivity.instance.lvlNum < 30) TemplateLevelActivity.instance.back();
+                                        else TemplateLevelActivity.instance.gameWin();
+                                        break;
                                     case 2: TemplateLevelActivity.instance.gameContinue(); break;
                                 }
                             }

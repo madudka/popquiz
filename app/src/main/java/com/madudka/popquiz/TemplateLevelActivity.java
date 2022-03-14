@@ -37,7 +37,7 @@ public class TemplateLevelActivity extends AppCompatActivity {
     private TemplateLevelBinding binding;
 
     private ILevel level;
-    private int lvlNum = 1;
+    public int lvlNum = 1;
 
     private int questionNum = 0;
     //Массив вопросов всегда - остается фиксированным
@@ -127,6 +127,7 @@ public class TemplateLevelActivity extends AppCompatActivity {
         back();
     }
 
+    //Отдельное условие для последнего уровня
     public void back() {
         AdvHelper.typeOperation = 1;
         if (!AdvHelper.showInterstitialAd(this, this)) {
@@ -146,6 +147,19 @@ public class TemplateLevelActivity extends AppCompatActivity {
             try {
                 Intent intent = new Intent(TemplateLevelActivity.this, TemplateLevelActivity.class);
                 intent.putExtra(LEVEL_NUM, ++lvlNum);
+                startActivity(intent);
+                finish();
+            } catch (Exception ex) {
+                //Log.d("back", ex.getMessage());
+            }
+        }
+    }
+
+    public void gameWin(){
+        AdvHelper.typeOperation = 1;
+        if (!AdvHelper.showInterstitialAd(this, this)) {
+            try {
+                Intent intent = new Intent(TemplateLevelActivity.this, Win.class);
                 startActivity(intent);
                 finish();
             } catch (Exception ex) {
@@ -188,14 +202,17 @@ public class TemplateLevelActivity extends AppCompatActivity {
         TextView tv = (TextView)dialogEnd.findViewById(R.id.textDescrEnd);
         tv.setText(level.getEndTextLvl());
 
+        //Условие для последнего уровня
         dialogEnd.findViewById(R.id.btnClose).setOnClickListener(v -> {
-            back();
+            if (lvlNum < 30) back();
+            else gameWin();
             dialogEnd.dismiss();
         });
 
-        //Добавить условие для последнего уровня
+        //Условие для последнего уровня
         dialogEnd.findViewById(R.id.btnContinue).setOnClickListener(v -> {
-            if (lvlNum < 30) gameContinue(); else back();
+            if (lvlNum < 30) gameContinue();
+            else gameWin();
             dialogEnd.dismiss();
         });
     }

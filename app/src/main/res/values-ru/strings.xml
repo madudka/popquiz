@@ -7,6 +7,7 @@
     <string name="start">Начать</string>
     <string name="back">Назад</string>
     <string name="exit">Нажмите еще раз, чтобы выйти</string>
+    <string name="ok">Хорошо</string>
     <string name="level">Уровень:</string>
     <string name="level1">Уровень 1</string>
     <string name="level2">Уровень 2</string>
@@ -199,6 +200,7 @@
     <string name="lvl28_theme">История Отечества [3/5]</string>
     <string name="lvl29_theme">История Отечества [4/5]</string>
     <string name="lvl30_theme">История Отечества [5/5]</string>
+    <string name="win">Поздравляю, вы прошли игру!</string>
     <string name="true_answer">Верно</string>
     <string name="false_answer">Неверно</string>
     <string name="show_hint">Показать подсказку</string>

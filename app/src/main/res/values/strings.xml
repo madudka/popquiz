@@ -7,6 +7,7 @@
     <string name="start">Start</string>
     <string name="back">Back</string>
     <string name="exit">Press one more time to exit</string>
+    <string name="ok">OK</string>
     <string name="level">Level:</string>
     <string name="level1">Level 1</string>
     <string name="level2">Level 2</string>
@@ -199,6 +200,7 @@
     <string name="lvl28_theme">History of the Fatherland [3/5]</string>
     <string name="lvl29_theme">History of the Fatherland [4/5]</string>
     <string name="lvl30_theme">History of the Fatherland [5/5]</string>
+    <string name="win">Congratulations! You win!</string>
     <string name="true_answer">True</string>
     <string name="false_answer">False</string>
     <string name="show_hint">Show hint</string>
